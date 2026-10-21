@@ -1,5 +1,5 @@
 #include <stdio.h> 
-#include <windows.h>
+#include <locale.h>
 #include <math.h>
 
 #define PI 3.141593f
@@ -121,7 +121,7 @@ static void Task65(float x)
 	float s = sin(x);
 	float c = cos(x);
 
-	if (c == 0) {
+	if (c < 1e-5) {
 		printf("Вираз tan x не має сенсу при таких значеннях x\n");
 		if (s < c) {
 			printf("У порядку зростання: sin x, cos x\n");
@@ -259,7 +259,7 @@ static void Task108(float k, float b, float R)
 }
 
 int main() {
-	SetConsoleOutputCP(65001);
+	setlocale(LC_ALL, "");
 	int n = 1;
 
 	while (n) {
@@ -301,7 +301,7 @@ int main() {
 		case 47: {
 			float rc, ss, s1r, s2r, s1t, s2t, s3t;
 			printf("Завдання 47: Задані радіус кола, сторона квадрата, дві суміжні сторони прямокутника та три сторони трикутника.\nВизначити, яка фігура має найбільшу площу.\n");
-			printf("%f %f %f %f %f %f %f", &rc, &ss, &s1r, &s2r, &s1t, &s2t, &s3t);
+			scanf_s("%f %f %f %f %f %f %f", &rc, &ss, &s1r, &s2r, &s1t, &s2t, &s3t);
 			Task47(rc, ss, s1r, s2r, s1t, s2t, s3t);
 			break;
 		}
